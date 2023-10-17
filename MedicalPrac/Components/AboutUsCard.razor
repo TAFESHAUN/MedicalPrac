@@ -1,0 +1,41 @@
+﻿@inherits ComponentBase
+
+<div class="aboutus-card">
+    <div class="about-info">
+        <h4>Title: @AboutTitle</h4>
+        <p>Date: @AboutDate</p>
+    </div>
+    <div class="about-info">
+        <h4>Find Out More:</h4>
+        <p>Link: @AboutLink</p>
+        <p>Contact Us: @AboutPhone</p>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string AboutTitle { get; set; }
+    [Parameter] public int AboutDate { get; set; }
+    [Parameter] public string AboutLink { get; set; }
+    [Parameter] public string AboutPhone { get; set; }
+}
+
+<style>
+    .aboutus-card {
+        border: 1px solid black;
+        padding: 20px;
+        margin: 10px;
+        background-color: beige;
+    }
+
+    .about-info {
+        font-size: 18px;
+    }
+
+    .about-info {
+        font-size: 16px;
+    }
+</style>
+
+@code {
+
+}

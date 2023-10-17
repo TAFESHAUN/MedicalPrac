@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<h3>Medical Practices Overview</h3>
+
+<div class="medical-practices">
+    @foreach (var practice in medicalPractices)
+    {
+        <div class="practice-card">
+            <h4>@practice.Name</h4>
+            <p>Specialty: @practice.Specialty</p>
+            <p>Location: @practice.Location</p>
+        </div>
+    }
+</div>
+
+@code {
+    private List<MedicalPractice> medicalPractices;
+
+    // Initialize the list of medical practices (you can fetch this data from a database or an API)
+    protected override void OnInitialized()
+    {
+        medicalPractices = new List<MedicalPractice>
+        {
+            new MedicalPractice { Name = "ABC Clinic", Specialty = "Cardiology", Location = "123 Main St" },
+            new MedicalPractice { Name = "XYZ Hospital", Specialty = "Orthopedics", Location = "456 Elm St" },
+            new MedicalPractice { Name = "EFG Medical Center", Specialty = "Dermatology", Location = "789 Oak St" },
+        };
+    }
+
+    public class MedicalPractice
+    {
+        public string Name { get; set; }
+        public string Specialty { get; set; }
+        public string Location { get; set; }
+    }
+}
+
+<style>
+    .medical-practices {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .practice-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        background-color: #f9f9f9;
+    }
+</style>

@@ -1,0 +1,56 @@
+﻿@page "/booking"
+@using MedicalPrac.Components;
+
+<h3>Appointment Booking</h3>
+
+@if (showConfirmation)
+{
+    <div class="alert alert-success">
+        Appointment booked successfully!
+    </div>
+}
+else
+{
+    <EditForm Model="appointmentModel" OnValidSubmit="BookAppointment">
+        <DataAnnotationsValidator />
+
+        <div class="form-group">
+            <label for="patientName">Patient Name:</label>
+            <InputText id="patientName" class="form-control" @bind-Value="appointmentModel.PatientName" />
+            <ValidationMessage For="@(() => appointmentModel.PatientName)" />
+        </div>
+
+        <div class="form-group">
+            <label for="appointmentDate">Appointment Date:</label>
+            <InputDate id="appointmentDate" class="form-control" @bind-Value="appointmentModel.AppointmentDate" />
+            <ValidationMessage For="@(() => appointmentModel.AppointmentDate)" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </div>
+    </EditForm>
+}
+
+@code {
+    private AppointmentModel appointmentModel = new AppointmentModel();
+    private bool showConfirmation;
+
+    private async Task BookAppointment()
+    {
+        if (appointmentModel != null)
+        {
+            // Implement your appointment booking logic here
+            // You can access appointmentModel.PatientName and appointmentModel.AppointmentDate
+            // to get the entered values.
+
+            // Simulate a delay (for demonstration purposes)
+            await Task.Delay(1000);
+
+            // Reset the form
+            appointmentModel = new AppointmentModel();
+            showConfirmation = true;
+        }
+    }
+}
+

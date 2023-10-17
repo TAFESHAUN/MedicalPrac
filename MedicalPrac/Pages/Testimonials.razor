@@ -1,0 +1,51 @@
+﻿@page "/testimonials"
+
+<h3>Testimonials</h3>
+
+<div class="testimonials">
+    @foreach (var testimonial in patientTestimonials)
+    {
+        <div class="testimonial-card">
+            <h4>@testimonial.PatientName</h4>
+            <p>Rating: @testimonial.Rating</p>
+            <p>@testimonial.Comment</p>
+        </div>
+    }
+</div>
+
+@code {
+    private List<PatientTestimonial> patientTestimonials;
+
+    // Initialize the list of patient testimonials (you can fetch this data from a database or an API)
+    protected override void OnInitialized()
+    {
+        patientTestimonials = new List<PatientTestimonial>
+        {
+            new PatientTestimonial { PatientName = "John Doe", Rating = 5, Comment = "Great experience with the staff and doctors." },
+            new PatientTestimonial { PatientName = "Jane Smith", Rating = 4, Comment = "I highly recommend this medical center." },
+            new PatientTestimonial { PatientName = "Alice Johnson", Rating = 5, Comment = "Outstanding care and service." },
+        };
+    }
+
+    public class PatientTestimonial
+    {
+        public string PatientName { get; set; }
+        public int Rating { get; set; }
+        public string Comment { get; set; }
+    }
+}
+
+<style>
+    .testimonials {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .testimonial-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        background-color: #f9f9f9;
+    }
+</style
